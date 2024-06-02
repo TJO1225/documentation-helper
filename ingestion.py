@@ -17,7 +17,8 @@ embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
 def ingest_docs():
     loader = ReadTheDocsLoader(
-        "langchain-docs/api.python.langchain.com/en/latest/chains"
+        "langchain-docs/api.python.langchain.com/en/latest/chains",
+        encoding="utf-8",  # Specify UTF-8 encoding
     )
 
     raw_documents = loader.load()
