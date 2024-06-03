@@ -5,7 +5,7 @@ load_dotenv()
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
 from typing import Any, Dict, List
-from langchain.chains import ConversationalRetrievalChain
+from langchain.chains.conversational_retrieval.base import ConversationalRetrievalChain
 from langchain_pinecone import PineconeVectorStore
 
 
@@ -25,3 +25,7 @@ def run_llm(query: str, chat_history: List[Dict[str, Any]] = []):
         llm=chat, retriever=docsearch.as_retriever(), return_source_documents=True
     )
     return qa.invoke({"question": query, "chat_history": chat_history})
+
+
+if __name__ == "__main__":
+    print(run_llm(query="What is Langchain?"))
